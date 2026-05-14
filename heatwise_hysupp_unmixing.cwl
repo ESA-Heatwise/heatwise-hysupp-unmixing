@@ -8,7 +8,7 @@ doc: |
 
 requirements:
   DockerRequirement:
-    dockerPull: heatwise/hysupp-unmixing:latest
+    dockerPull: ghcr.io/leonelgl/heatwise-hysupp-unmixing:v1.0.0
   InlineJavascriptRequirement: {}
 
 inputs:
