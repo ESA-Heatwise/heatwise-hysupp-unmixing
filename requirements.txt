@@ -1,2 +1,6 @@
 numpy
 scipy
+rasterio
+pandas
+openpyxl
+pyyaml
