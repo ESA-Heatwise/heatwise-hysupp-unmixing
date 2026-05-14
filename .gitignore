@@ -19,3 +19,9 @@ results/
 *.tmp
 .DS_Store
 Thumbs.db
+
+# Local test data
+data/
+
+# Docker test outputs
+results_docker/
