@@ -25,3 +25,6 @@ data/
 
 # Docker test outputs
 results_docker/
+
+# CWL test outputs
+results_cwl/

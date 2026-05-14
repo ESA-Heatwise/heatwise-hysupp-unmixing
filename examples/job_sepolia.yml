@@ -1,0 +1,21 @@
+input_image:
+  class: File
+  path: ../data/Sepolia/Sepolia_CHIME_Thermopolis_v2_COG.tif
+
+endmembers:
+  class: File
+  path: ../data/Sepolia/endmembers_sepolia.xlsx
+
+wavelengths_txt:
+  class: File
+  path: ../data/Sepolia/Sepolia_CHIME_Thermopolis_v2_wavelengths.txt
+
+output_dir: "."
+
+output_prefix: Sepolia_FCLS
+
+scale_factor: 1.0
+min_abundance: 0.0
+maxiter: 200
+ftol: 1.0e-8
+log_every: 1000

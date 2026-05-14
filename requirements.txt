@@ -4,3 +4,4 @@ rasterio
 pandas
 openpyxl
 pyyaml
+cwltool
