@@ -35,7 +35,7 @@ heatwise-hysupp-unmixing/
             └── fcls.py
 ```
 
-Local test data and generated outputs are not tracked by Git and should be placed locally under:
+The Sepolia test input data are included under:
 
 ```text
 data/Sepolia/

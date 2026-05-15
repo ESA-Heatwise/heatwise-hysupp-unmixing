@@ -21,7 +21,9 @@ results/
 Thumbs.db
 
 # Local test data
-data/
+data/*
+!data/Sepolia/
+!daa/Sepolia/**
 
 # Docker test outputs
 results_docker/
