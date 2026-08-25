@@ -21,6 +21,7 @@ RUN python -m pip install --upgrade pip setuptools wheel && \
     python -m pip install --no-cache-dir -r /app/requirements.txt
 
 COPY processor.py /app/processor.py
+COPY extract_path_from_stac.py /app/extract_path_from_stac.py
 COPY src /app/src
 
-ENTRYPOINT ["python", "/app/processor.py"]
+ENTRYPOINT ["python"]

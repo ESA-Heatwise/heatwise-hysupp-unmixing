@@ -1,0 +1,1102 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/eo/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/raster/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v2.0.0/schema.json",
+    "https://stac-extensions.github.io/processing/v1.1.0/schema.json",
+    "https://stac-extensions.github.io/file/v2.1.0/schema.json"
+  ],
+  "id": "athens-sepolia-chime",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          23.72867394685717,
+          37.985437449356944
+        ],
+        [
+          23.72867394685717,
+          38.01555424879736
+        ],
+        [
+          23.698235358779367,
+          38.01555424879736
+        ],
+        [
+          23.698235358779367,
+          37.985437449356944
+        ],
+        [
+          23.72867394685717,
+          37.985437449356944
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    23.698235358779367,
+    37.985437449356944,
+    23.72867394685717,
+    38.01555424879736
+  ],
+  "properties": {
+    "site": "athens-sepolia",
+    "license": "CC-BY-4.0",
+    "datetime": "2025-03-08T00:00:00Z",
+    "platform": "CHIME",
+    "description": "CHIME-like dataset for multiple sites and acquisition conditions, replicating the spectral configuration and spatial characteristics of the CHIME sensor. The workflow includes spectral harmonization of multispectral Level-2 reflectance data to the CHIME contiguous band set (0.40\u20132.50 \u03bcm, ~200 bands), followed by spatial harmonization to a 30 m product resolution.",
+    "end_datetime": "2025-03-08T00:00:00Z",
+    "start_datetime": "2025-03-08T00:00:00Z",
+    "processing:lineage": "Mimicked data produced by the University of Pavia Telecommunications & Remote Sensing Laboratory using:  EnMAP data under license from DLR using modified EnMAP data \u00a9 DLR. ECOSTRESS multispectral thermal infrared radiometer data (https://ecostress.jpl.nasa.gov/)."
+  },
+  "links": [
+    {
+      "rel": "collection",
+      "href": "https://eoresults.esa.int/stac/collections/CHIME_and_LSTM_mimicked_reflectances_over_land_HEATWISE",
+      "type": "application/json",
+      "title": "CHIME and LSTM mimicked reflectances over land (HEATWISE)"
+    },
+    {
+      "rel": "root",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Athens Sepolia Chime Thermopolis"
+    },
+    {
+      "rel": "parent",
+      "href": "../catalog.json",
+      "type": "application/json",
+      "title": "Athens Sepolia Chime Thermopolis"
+    }
+  ],
+  "assets": {
+    "athens_sepolia_chime_thermopolis": {
+      "href": "./Sepolia_CHIME_Thermopolis_v2_COG.tif",
+      "type": "image/tiff; application=geotiff; profile=cloud-optimized",
+      "bands": [
+        {
+          "name": "band_1",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_2",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_3",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_4",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_5",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_6",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_7",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_8",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_9",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_10",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_11",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_12",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_13",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_14",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_15",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_16",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_17",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_18",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_19",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_20",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_21",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_22",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_23",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_24",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_25",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_26",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_27",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_28",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_29",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_30",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_31",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_32",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_33",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_34",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_35",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_36",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_37",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_38",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_39",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_40",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_41",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_42",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_43",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_44",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_45",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_46",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_47",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_48",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_49",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_50",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_51",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_52",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_53",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_54",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_55",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_56",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_57",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_58",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_59",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_60",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_61",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_62",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_63",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_64",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_65",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_66",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_67",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_68",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_69",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_70",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_71",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_72",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_73",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_74",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_75",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_76",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_77",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_78",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_79",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_80",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_81",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_82",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_83",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_84",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_85",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_86",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_87",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_88",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_89",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_90",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_91",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_92",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_93",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_94",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_95",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_96",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_97",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_98",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_99",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_100",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_101",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_102",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_103",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_104",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_105",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_106",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_107",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_108",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_109",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_110",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_111",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_112",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_113",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_114",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_115",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_116",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_117",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_118",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_119",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_120",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_121",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_122",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_123",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_124",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_125",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_126",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_127",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_128",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_129",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_130",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_131",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_132",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_133",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_134",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_135",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_136",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_137",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_138",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_139",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_140",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_141",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_142",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_143",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_144",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_145",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_146",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_147",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_148",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_149",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_150",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_151",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_152",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_153",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_154",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_155",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_156",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_157",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_158",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_159",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_160",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_161",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_162",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_163",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_164",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_165",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_166",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_167",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_168",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_169",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_170",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_171",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_172",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_173",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_174",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_175",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_176",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_177",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_178",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_179",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_180",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_181",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_182",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_183",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_184",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_185",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_186",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_187",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_188",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_189",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_190",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_191",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_192",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_193",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_194",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_195",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_196",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_197",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_198",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_199",
+          "nodata": "nan",
+          "data_type": "float32"
+        },
+        {
+          "name": "band_200",
+          "nodata": "nan",
+          "data_type": "float32"
+        }
+      ],
+      "file:size": 7658462,
+      "proj:code": "EPSG:32634",
+      "proj:shape": [
+        110,
+        87
+      ],
+      "file:checksum": "1220405d0c112162ba6edb73a82f4db3d8268e3c9416e946d553865aea21173fdbb8",
+      "proj:transform": [
+        30.0,
+        0.0,
+        736964.0,
+        0.0,
+        -30.0,
+        4210980.0
+      ],
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "CHIME_and_LSTM_mimicked_reflectances_over_land_HEATWISE"
+}
