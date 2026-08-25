@@ -23,4 +23,4 @@ RUN python -m pip install --upgrade pip setuptools wheel && \
 COPY processor.py /app/processor.py
 COPY src /app/src
 
-ENTRYPOINT ["python", "/app/processor.py"]
+ENTRYPOINT ["python"]
