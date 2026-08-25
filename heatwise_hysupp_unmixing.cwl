@@ -14,10 +14,10 @@ $graph:
       hyperspectral products.
     requirements: []
     inputs:
-      - id: input_image
-        type: File
-        label: input image
-        doc: Input CHIME-mimicked hyperspectral GeoTIFF.
+      - id: input_catalog
+        type: Directory
+        label: input catalog
+        doc: Directory with stac catalog referencing input CHIME-mimicked hyperspectral GeoTIFF.
       - id: endmembers
         type: File
         label: endmembers
@@ -66,10 +66,16 @@ $graph:
         default: 10000
         doc: Print FCLS progress every N pixels. Use 0 to disable.
     steps: 
+      extract_input_image:
+        run: '#extract_stac_catalog'
+        in: 
+          input_catalog: input_catalog
+        out:
+          - image_path 
       processor:
         run: '#hysupp_unmixing_processor'
         in:
-          input_image: input_image
+          input_image: extract_input_image/image_path
           endmembers: endmembers
           wavelengths_txt: wavelengths_txt
           output_dir: output_dir
@@ -235,3 +241,25 @@ $graph:
         doc: JSON metadata describing the processing run.
         outputBinding:
           glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_run_metadata.json")
+  - class: CommandLineTool
+    id: extract_stac_catalog
+    label: Transform stac catalog input to file input
+    baseCommand: ["/app/extract_path_from_stac.py"]
+    doc: |
+        Processor that takes a Directory + STAC catalog input and transforms it to a file input
+    requirements:
+      DockerRequirement:
+        dockerPull: ghcr.io/leonelgl/heatwise-hysupp-unmixing:v1.0.0
+    inputs:
+      input_catalog:
+        type: Directory
+        label: input catalog
+        doc: Directory with stac catalog referencing input CHIME-mimicked hyperspectral GeoTIFF.
+        inputBinding:
+          prefix: --input-catalog
+    outputs:
+      image_path:
+        type: File
+        doc: Path to the image referenced by the input STAC catalog
+        outputBinding:
+            glob: input_file.tif
