@@ -87,32 +87,11 @@ $graph:
           ftol: ftol
           log_every: log_every
         out:
-          - abundance_stack
-          - classification_map
-          - class_names
-          - wavelengths_used
-          - run_metadata
+          - output
     outputs:
-      abundance_stack:
-        type: File
-        doc: FCLS abundance stack as Cloud Optimized GeoTIFF.
-        outputSource: processor/abundance_stack
-      classification_map:
-        type: File
-        doc: Top-1 classification map as Cloud Optimized GeoTIFF.
-        outputSource: processor/classification_map
-      class_names:
-        type: File
-        doc: JSON file containing the class label mapping.
-        outputSource: processor/class_names
-      wavelengths_used:
-        type: File
-        doc: Wavelengths used by the FCLS processor after spectral matching.
-        outputSource: processor/wavelengths_used
-      run_metadata:
-        type: File
-        doc: JSON metadata describing the processing run.
-        outputSource: processor/run_metadata
+      output:
+        type: Directory
+        outputSource: processor/output
   - class: CommandLineTool
     id: hysupp_unmixing_processor
     label: HEATWISE HySUPP Unmixing Processor
@@ -210,37 +189,11 @@ $graph:
         inputBinding:
           prefix: --log-every
           position: 11
-
     outputs:
-      abundance_stack:
-        type: File
-        doc: FCLS abundance stack as Cloud Optimized GeoTIFF.
+      output:
+        type: Directory
         outputBinding:
-          glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_abundance_stack_COG.tif")
-
-      classification_map:
-        type: File
-        doc: Top-1 classification map as Cloud Optimized GeoTIFF.
-        outputBinding:
-          glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_classification_map_COG.tif")
-
-      class_names:
-        type: File
-        doc: JSON file containing the class label mapping.
-        outputBinding:
-          glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_class_names.json")
-
-      wavelengths_used:
-        type: File
-        doc: Wavelengths used by the FCLS processor after spectral matching.
-        outputBinding:
-          glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_wavelengths_used_um.txt")
-
-      run_metadata:
-        type: File
-        doc: JSON metadata describing the processing run.
-        outputBinding:
-          glob: $(inputs.output_dir + "/" + inputs.output_prefix + "_run_metadata.json")
+          glob: "."
   - class: CommandLineTool
     id: extract_stac_catalog
     label: Transform stac catalog input to file input
