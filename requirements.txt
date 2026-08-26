@@ -6,3 +6,4 @@ openpyxl
 pyyaml
 cwltool
 pystac
+shapely

@@ -41,7 +41,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -50,6 +49,8 @@ import numpy as np
 import pandas as pd
 import rasterio
 from rasterio.shutil import copy as rio_copy
+import pystac
+import shapely
 
 from heatwise_unmixing.processing.fcls import (
     compute_fcls_abundances,
@@ -159,6 +160,110 @@ def write_json(path: str | Path, payload: dict[str, Any]) -> None:
     with path.open("w", encoding="utf-8") as f:
         json.dump(json_safe(payload), f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+
+# abundance_stack_path = output_dir / f"{prefix}_abundance_stack_COG.tif"
+# classification_path = output_dir / f"{prefix}_classification_map_COG.tif"
+# TODO Not yet included as assets (optional):
+# class_names_path = output_dir / f"{prefix}_class_names.json"
+# metadata_path = output_dir / f"{prefix}_run_metadata.json"
+# wavelengths_used_path = output_dir / f"{prefix}_wavelengths_used_um.txt"
+
+def build_stac(
+    abundance_path: Path,
+    classification_path: Path,
+    metadata: dict[str, Any],
+    class_payload: dict[str, Any],
+    ) -> pystac.Item:
+
+    with rasterio.open(abundance_path) as src:
+        bbox_list = src.bounds.left, src.bounds.bottom, src.bounds.right, src.bounds.top
+        abundance_dtypes = src.dtypes
+        crs = src.crs
+        transform = src.transform
+        spatial_resolution = abs(transform.a) # TODO assuming square pixels in metric crs
+    bbox = shapely.geometry.box(*bbox_list)
+    geometry = json.loads(shapely.to_geojson(bbox))
+
+    now = datetime.strptime(metadata["created_utc"], "%Y-%m-%dT%H:%M:%SZ")
+    # FIXME datetime should be representing the time of the image, not the time of processing
+    item = pystac.Item(
+        "hysupp_unmixing",
+        geometry=geometry,
+        bbox=bbox_list,
+        datetime=now,
+        properties=metadata
+    )
+    item.ext.add("proj")
+    item.ext.add("classification")
+    item.stac_extensions.append(
+        "https://stac-extensions.github.io/processing/v1.2.0/schema.json"
+    )
+
+    asset_abundance = pystac.Asset(
+        str(abundance_path),
+        title="Abundance Stack",
+        description="Abundances stack, one band per endmember/class. Values are continuous abundance fractions."
+    )
+
+    asset_abundance.extra_fields["bands"] = []
+    for name, dtype in zip(metadata["endmembers"]["names"], abundance_dtypes, strict=True):
+        asset_abundance.extra_fields["bands"].append({
+            "name": name,
+            "data_type": dtype,
+            "raster:spatial_resolution": spatial_resolution,
+            "description": f"Abundance of class {name}",
+        })
+
+    asset_classification = pystac.Asset(
+        str(classification_path),
+        title="Classification Map",
+        description="The top-1 class label obtained from the maximum abundance per pixel",
+    )
+
+    asset_abundance.extra_fields["bands"] = [
+        {
+            "name": "classification_map",
+            "raster:spatial_resolution": spatial_resolution,
+            "description": "Top-1 class label obtained from the maximum abundance per pixel",
+            "classification:classes": [
+                {
+                    "value": cls["label"],
+                    "name": cls["name"],
+                }
+                for cls in class_payload["classes"]
+            ],
+        }
+    ]
+
+    item.ext.proj.transform = list(transform)
+    item.ext.proj.geometry = geometry
+    item.ext.proj.bbox = bbox_list
+    item.ext.proj.code = f"EPSG:{crs.to_epsg()}"
+    item.ext.proj.wkt2 = crs.to_wkt()
+
+
+    item.properties["processing:software"] = {
+        metadata["processor"]["name"]: metadata["processor"]["version"],
+    }
+    item.properties["processing:datetime"] = metadata["created_utc"]
+
+    item.add_asset("abundance", asset_abundance)
+    item.add_asset("classification", asset_classification)
+
+    catalog = pystac.Catalog(
+        id="hysupp_unmixing",
+        description="Hysupp unmixing catalog",
+        title="Hysupp unmixing",
+        catalog_type=pystac.CatalogType.SELF_CONTAINED,
+        # Flat layout without intermediate directories
+        strategy=pystac.layout.CustomLayoutStrategy(
+            item_func=lambda it, parent: Path(parent) / f"{it.id}.json"
+        )
+    )
+    catalog.add_item(item)
+
+    return catalog
 
 
 def read_wavelengths_txt(path: str | Path) -> np.ndarray:
@@ -598,6 +703,7 @@ def main() -> None:
     class_names_path = output_dir / f"{prefix}_class_names.json"
     metadata_path = output_dir / f"{prefix}_run_metadata.json"
     wavelengths_used_path = output_dir / f"{prefix}_wavelengths_used_um.txt"
+    catalog_path = output_dir / "catalog.json"
 
     reference_profile = raster_info["profile"].copy()
     reference_profile.update(
@@ -690,11 +796,20 @@ def main() -> None:
 
     write_json(metadata_path, metadata)
 
+    catalog = build_stac(
+        abundance_stack_path,
+        classification_path,
+        metadata,
+        class_payload
+    )
+    catalog.normalize_and_save(str(catalog_path))
+
     print(f"[OK] Wrote abundance stack: {abundance_stack_path}")
     print(f"[OK] Wrote classification map: {classification_path}")
     print(f"[OK] Wrote class names: {class_names_path}")
     print(f"[OK] Wrote wavelengths used: {wavelengths_used_path}")
     print(f"[OK] Wrote metadata: {metadata_path}")
+    print(f"[OK] Wrote STAC: {catalog_path}")
 
 
 if __name__ == "__main__":
