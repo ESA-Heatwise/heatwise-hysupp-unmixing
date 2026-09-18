@@ -102,7 +102,7 @@ $graph:
 
     requirements:
       DockerRequirement:
-        dockerPull: ghcr.io/leonelgl/heatwise-hysupp-unmixing:v1.0.0
+        dockerPull: ghcr.io/esa-heatwise/heatwise-hysupp-unmixing:v1.0.0
       InlineJavascriptRequirement: {}
 
     inputs:
