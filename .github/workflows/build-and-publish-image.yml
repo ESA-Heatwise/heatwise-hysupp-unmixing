@@ -1,0 +1,53 @@
+name: Build and publish HySUPP image
+
+on:
+  push:
+    branches:
+      - main
+      - fix-hysupp-image-namespace
+    paths:
+      - "Dockerfile"
+      - "requirements.txt"
+      - "processor.py"
+      - "extract_path_from_stac.py"
+      - "src/**"
+      - "heatwise_hysupp_unmixing.cwl"
+      - ".github/workflows/build-and-publish-image.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GHCR
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | \
+            docker login ghcr.io \
+              -u "${{ github.actor }}" \
+              --password-stdin
+
+      - name: Build HySUPP image
+        run: |
+          docker build \
+            -t ghcr.io/esa-heatwise/heatwise-hysupp-unmixing:v1.0.0 \
+            .
+
+      - name: Test HySUPP image
+        run: |
+          docker run --rm \
+            ghcr.io/esa-heatwise/heatwise-hysupp-unmixing:v1.0.0 \
+            /app/processor.py --help
+
+      - name: Push HySUPP image
+        run: |
+          docker push \
+            ghcr.io/esa-heatwise/heatwise-hysupp-unmixing:v1.0.0
