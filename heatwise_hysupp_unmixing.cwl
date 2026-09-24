@@ -202,7 +202,7 @@ $graph:
         Processor that takes a Directory + STAC catalog input and transforms it to a file input
     requirements:
       DockerRequirement:
-        dockerPull: ghcr.io/leonelgl/heatwise-hysupp-unmixing:v1.0.0
+        dockerPull: ghcr.io/esa-heatwise/heatwise-hysupp-unmixing:v1.0.0
     inputs:
       input_catalog:
         type: Directory
