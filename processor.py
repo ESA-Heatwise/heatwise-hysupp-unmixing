@@ -49,6 +49,7 @@ import numpy as np
 import pandas as pd
 import rasterio
 from rasterio.shutil import copy as rio_copy
+from rasterio.warp import transform_bounds
 import pystac
 import shapely
 
@@ -178,6 +179,7 @@ def build_stac(
 
     with rasterio.open(abundance_path) as src:
         bbox_list = src.bounds.left, src.bounds.bottom, src.bounds.right, src.bounds.top
+        bbox_list = transform_bounds(src.crs, "EPSG:4326", *bbox_list, densify_pts=21)
         abundance_dtypes = src.dtypes
         crs = src.crs
         transform = src.transform
